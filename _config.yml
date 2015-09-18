@@ -1,0 +1,14 @@
+markdown: redcarpet
+highlighter: null
+permalink: /:title
+
+title: yinlin
+email: yinlinZho@gmail.com
+
+
+redcarpet:
+  extensions: [strikethrough, tables]
+
+sass:
+  sass_dir: public/css
+  style: :compressed
