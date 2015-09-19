@@ -32,4 +32,6 @@ description: jekyll 代码高亮的一种方案
 为网页加入样式
 
 _layout目录下的html加入
+{%highlight html%}
 	<link rel="stylesheet" href="/assets/themes/abel/css/pygments.css">
+{%endhighlight%}
