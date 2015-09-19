@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="/assets/themes/abel/css/pygments.css">	
+<link rel="stylesheet" href="/assets/abel/css/pygments.css">	
   <head>
     {% include head.html %}
   </head>

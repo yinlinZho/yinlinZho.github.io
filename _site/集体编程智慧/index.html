@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="/assets/themes/abel/css/pygments.css">	
   <head>
     <!-- meta information -->
 <meta charset="utf-8">
 <meta name="description" 
-      content="" >
+      content="### 推荐系统网站如何根据用户在网站上面的历史行为和用户群体偏好，猜测客户的偏好，来提供更好的服务。### 协作型过滤：在一大群用户中，筛选出与某个用户相似度高的一小群用户群体，通过考察与目标用户偏好相似的群体，构建出一个推荐列表首..." >
 <meta name="author" content="yinlinZ">
 
 <!-- Enable responsiveness on mobile devices-->
@@ -50,11 +51,65 @@
 
       </header>
 
-      <article class="single row gutters">
+      <link rel="stylesheet" href="/assets/themes/abel/css/pygments.css">
+<article class="single row gutters">
   <time class="published" datetime="2015-09-16">16 September 2015</time>
   <h2>协作性过滤</h2>
 
-  
+  <h3>推荐系统</h3>
+
+<p>网站如何根据用户在网站上面的历史行为和用户群体偏好，猜测客户的偏好，来提供更好的服务。</p>
+
+<h3>协作型过滤：在一大群用户中，筛选出与某个用户相似度高的一小群用户群体，通过考察与目标用户偏好相似的群体，构建出一个推荐列表</h3>
+
+<p>首先我们需要在大量用户数据中筛选出与目标用户偏好相近的用户群体。假定所有用户数据用python字典pref={&#39;person&#39;:{&#39;movie&#39;:quality}}表示,每个用户person(i)对应偏好空间中的一个点pref[person(i)] = {&#39;movie&#39;:quality}。通过计算目标点与其他点的距离，筛选出与目标点距离最近的k个点的集合，作为偏好相似的群体。</p>
+
+<p>1.计算距离</p>
+
+<p>欧几里德距离
+<code></p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1 </span><span class="k">def</span> <span class="nf">sim_Euclid</span><span class="p">(</span><span class="n">pref</span><span class="p">,</span><span class="n">person1</span><span class="p">,</span><span class="n">person2</span><span class="p">):</span>
+<span class="lineno"> 2 </span>    <span class="n">si</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="lineno"> 3 </span>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">person1</span><span class="p">:</span>
+<span class="lineno"> 4 </span>        <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">person2</span><span class="p">:</span>
+<span class="lineno"> 5 </span>            <span class="n">si</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="lineno"> 6 </span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">si</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="lineno"> 7 </span>     <span class="n">similiarty</span> <span class="o">=</span>  <span class="mi">0</span>
+<span class="lineno"> 8 </span>    <span class="k">else</span><span class="p">:</span>
+<span class="lineno"> 9 </span>        <span class="n">distance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">pow</span><span class="p">(</span><span class="n">pref</span><span class="p">[</span><span class="n">person1</span><span class="p">][</span><span class="n">item</span><span class="p">]</span> <span class="o">-</span> <span class="n">pref</span><span class="p">[</span><span class="n">person2</span><span class="p">][</span><span class="n">item</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pref</span><span class="p">[</span><span class="n">person1</span><span class="p">]</span> <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pref</span><span class="p">[</span><span class="n">person2</span><span class="p">]])</span>
+<span class="lineno">10 </span>        <span class="n">similarity</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">sqrt</span><span class="p">(</span><span class="n">distance</span><span class="p">))</span>
+<span class="lineno">11 </span> <span class="k">return</span> <span class="n">similarity</span></code></pre></div>
+
+<p></code>
+皮尔逊相似度
+<code></p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1 </span><span class="k">def</span> <span class="nf">sim_pearson</span><span class="p">(</span><span class="n">pref</span><span class="p">,</span><span class="n">person1</span><span class="p">,</span><span class="n">person2</span><span class="p">):</span>
+<span class="lineno"> 2 </span>    <span class="n">si</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="lineno"> 3 </span>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pref</span><span class="p">[</span><span class="n">person1</span><span class="p">]:</span>
+<span class="lineno"> 4 </span>        <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pref</span><span class="p">[</span><span class="n">person2</span><span class="p">]:</span>
+<span class="lineno"> 5 </span>            <span class="n">si</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="lineno"> 6 </span>    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">si</span><span class="p">)</span>
+<span class="lineno"> 7 </span>    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+<span class="lineno"> 8 </span>        <span class="n">similarity</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno"> 9 </span>    <span class="k">else</span><span class="p">:</span>
+<span class="lineno">10 </span>        <span class="n">sum1</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">pref</span><span class="p">[</span><span class="n">person1</span><span class="p">][</span><span class="n">item</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">si</span><span class="p">])</span>
+<span class="lineno">11 </span>        <span class="n">sum2</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">pref</span><span class="p">[</span><span class="n">person2</span><span class="p">][</span><span class="n">item</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">si</span><span class="p">])</span>
+<span class="lineno">12 </span>        <span class="n">sum1sq</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">pow</span><span class="p">(</span><span class="n">pref</span><span class="p">[</span><span class="n">person1</span><span class="p">][</span><span class="n">item</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">si</span><span class="p">])</span>
+<span class="lineno">13 </span>        <span class="n">sum2sq</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">pow</span><span class="p">(</span><span class="n">pref</span><span class="p">[</span><span class="n">person2</span><span class="p">][</span><span class="n">item</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">si</span><span class="p">])</span>
+<span class="lineno">14 </span>        <span class="n">pSum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">pref</span><span class="p">[</span><span class="n">person1</span><span class="p">][</span><span class="n">item</span><span class="p">]</span><span class="o">*</span><span class="n">pref</span><span class="p">[</span><span class="n">person2</span><span class="p">][</span><span class="n">item</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">si</span><span class="p">])</span>
+<span class="lineno">15 </span>        <span class="n">num</span> <span class="o">=</span> <span class="n">pSum</span> <span class="o">-</span><span class="n">sum1</span> <span class="o">*</span> <span class="n">sum2</span><span class="o">/</span><span class="n">n</span>
+<span class="lineno">16 </span>        <span class="n">den</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">sum1sq</span> <span class="o">-</span> <span class="nb">pow</span><span class="p">(</span><span class="n">sum1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">sum2sq</span> <span class="o">-</span> <span class="nb">pow</span><span class="p">(</span><span class="n">sum2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">))</span>
+<span class="lineno">17 </span>        <span class="k">if</span> <span class="n">den</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="lineno">18 </span>            <span class="n">similarity</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">19 </span>        <span class="k">else</span><span class="p">:</span>
+<span class="lineno">20 </span>            <span class="n">similarity</span> <span class="o">=</span> <span class="n">num</span><span class="o">/</span><span class="n">den</span>
+<span class="lineno">21 </span>    <span class="k">return</span> <span class="n">similarity</span></code></pre></div>
+    
+
+<p></code></p>
+
 </article>
 
 

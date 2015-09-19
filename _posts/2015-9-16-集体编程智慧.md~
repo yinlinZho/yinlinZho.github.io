@@ -27,7 +27,8 @@ def sim_Euclid(pref,person1,person2):
     if len(si) == 0:
 	    similiarty =  0
     else:
-        distance = sum([pow(pref[person1][item] - pref[person2][item],2) for item in pref[person1] if item in pref[person2]])
+        distance = sum([pow(pref[person1][item] - pref[person2][item],2)
+		 for item in pref[person1] if item in pref[person2]])
         similarity = 1/(1+sqrt(distance))
 	return similarity
 

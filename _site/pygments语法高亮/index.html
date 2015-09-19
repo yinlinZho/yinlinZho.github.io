@@ -5,14 +5,14 @@
     <!-- meta information -->
 <meta charset="utf-8">
 <meta name="description" 
-      content="我的第一篇文章{{ page.date | date_to_string }}" >
+      content="##### ubuntu下安装pygmentssudo pip install pygments#### 为博客配置代码样式- 进入博客所在目录 cd /blog_site/assets/themes/abel/css/pygment..." >
 <meta name="author" content="yinlinZ">
 
 <!-- Enable responsiveness on mobile devices-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
 <!-- title -->
-<title>你好，世界 &middot; yinlin</title>
+<title>pygments语法高亮 &middot; yinlin</title>
 
 <!-- icons -->
 <link rel="shortcut icon" href="/public/images/favicon.ico" />
@@ -53,11 +53,40 @@
 
       <link rel="stylesheet" href="/assets/themes/abel/css/pygments.css">
 <article class="single row gutters">
-  <time class="published" datetime="2015-09-10">10 September 2015</time>
-  <h2>你好，世界</h2>
+  <time class="published" datetime="2015-09-19">19 September 2015</time>
+  <h2>pygments语法高亮</h2>
 
-  <p>我的第一篇文章</p>
-<p>10 Sep 2015</p>
+  <h5>ubuntu下安装pygments</h5>
+
+<p>sudo pip install pygments</p>
+
+<h4>为博客配置代码样式</h4>
+
+<ul>
+<li>进入博客所在目录 </li>
+</ul>
+
+<p>cd /blog_site/assets/themes/abel/css/pygments.css</p>
+
+<ul>
+<li>设置代码高亮的样式mobokai </li>
+</ul>
+
+<p>pygmentize -f html -a .highlight -S monokai  &gt; pygments.css</p>
+
+<p>vim pygments.css打开css文件，加入一行</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.highlight</span><span class="p">{</span> <span class="k">overflow</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span> <span class="p">}</span></code></pre></div>
+
+<p>设置代码块左右滚轮</p>
+
+<ul>
+<li>为网页加入样式</li>
+</ul>
+
+<p>_layout目录下的html加入</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;/assets/themes/abel/css/pygments.css&quot;</span><span class="nt">&gt;</span></code></pre></div>
 
 </article>
 
