@@ -6,8 +6,8 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     <description>mark mark</description>
     <language>en-us</language>
-    <pubDate>Sat, 19 Sep 2015 14:28:13 +0800</pubDate>
-    <lastBuildDate>Sat, 19 Sep 2015 14:28:13 +0800</lastBuildDate>
+    <pubDate>Sat, 19 Sep 2015 14:34:37 +0800</pubDate>
+    <lastBuildDate>Sat, 19 Sep 2015 14:34:37 +0800</lastBuildDate>
 
     
       <item>
@@ -37,16 +37,22 @@
 
 &lt;p&gt;_layout目录下的html加入&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;xmp&amp;gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/assets/themes/abel/css/pygments.css&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;xmp&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;xmp&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/assets/themes/abel/css/pygments.css&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/xmp&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 </description>
       </item>
     
       <item>
-        <title>Markdown R</title>
+        <title>R +Markdown 提高写作效率</title>
         <link>/markdown-R</link>
         <pubDate>Sat, 19 Sep 2015 00:00:00 +0800</pubDate>
         <author>yinlinZ</author>
-        <description></description>
+        <description>&lt;h4&gt;安装RStuidio&lt;/h4&gt;
+
+&lt;p&gt;ubuntu下
+    sudo apt-get install r-base r-dev&lt;/p&gt;
+</description>
       </item>
     
       <item>
@@ -81,8 +87,9 @@
 
 &lt;p&gt;&lt;/code&gt;
 皮尔逊相似度
-pearson是一种相对复杂的方法。不同用户对影片评分的标准不同，导致该用户对影片评分总体偏高或者偏低。pearson相似度通过拟合两组数据
-&lt;code&gt;&lt;/p&gt;
+pearson是一种相对复杂的方法。不同用户对影片评分的标准不同，导致该用户对影片评分总体偏高或者偏低。pearson相似度通过拟合两组用户评分数据，找到一条最佳拟合线。当两个用户评分相同时，用户的每一个影片评分数据点都落在拟合线上，且拟合线斜率为1。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1 &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sim_pearson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt; 2 &lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;si&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;

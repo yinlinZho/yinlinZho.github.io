@@ -13,4 +13,4 @@ ubuntu下安装R
 安装RStudio桌面版，选择deb包下载并安装
 	https://www.rstudio.com/products/rstudio/download/
 
-安装成功后进入RStudio，file->new RMarkDown,在创建rmd文件的时候提示安装依赖包。
+安装成功后进入RStudio，file->new RMardDown,在创建rmd文件的时候提示安装依赖包。

@@ -1,0 +1,26 @@
+---
+layout: post
+title: linux 下文件操作命令行
+tag: linux
+catagory: linux
+description: linux文件操作的命令行
+---
+
+
+创建文件
+	touch filename.txt
+	touch filename_{1..10}_linux.txt	
+查看文件
+	cat your_dir
+查看文件权限
+	r 读	
+	w 写
+	x 执行
+	打印 （文件名-权限 所有者 所属用户组 文件大小 最后修改时间 文件名）
+	ls -l
+变更文件的所有者
+	sudo chown username filename
+修改文件权限
+	chmod 二进制	数字 filename
+
+
